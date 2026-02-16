@@ -15,7 +15,7 @@ const app = express();
 
 app.use(cors({
   origin: ['http://localhost:5173',
-    'https://saes-frontend.vercel.app/'
+    'https://saes-frontend.vercel.app'
   ],
   credentials: true
 }));
