@@ -1,4 +1,5 @@
-const { Pool } = require('pg');
+import { Pool } from 'pg';
+
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL
@@ -12,4 +13,4 @@ pool.on('connect', () => {
   console.log('🟢 Conectado a PostgreSQL');
 });*/
 
-module.exports = pool;
+export default pool;

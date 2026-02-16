@@ -1,15 +1,16 @@
-require('dotenv').config();
-const express = require('express');
-const router = express.Router();
-const pool = require('../config/db');
-const usuariosController = require('../controllers/usuarios.controller');
-const { auth } = require('../middlewares/auth.middleware');
-const { allowRoles } = require('../middlewares/roles.middleware');
+import  express from 'express';
+import {Router} from 'express';
+import pool from '../config/db.js';
+import {getAll, create, toggleActivo, resetPassword} from '../controllers/usuarios.controller.js';
+import { auth } from '../middlewares/auth.middleware.js';
+import { allowRoles } from '../middlewares/roles.middleware.js';
+
+const router = Router();
 
 router.get('/', 
   auth, 
   allowRoles('ADMIN'), 
-  usuariosController.getAll
+  getAll
 );
 
 router.get('/aa', auth, async (req, res) => {
@@ -23,19 +24,19 @@ router.post(
   '/', 
   auth, 
   allowRoles('ADMIN'),
-    usuariosController.create
+    create
 );
 
 router.patch('/:id/activo',
   auth,
   allowRoles('ADMIN'),
-  usuariosController.toggleActivo
+  toggleActivo
 );
 
 router.patch('/:id/reset-password',
   auth,
   allowRoles('ADMIN'),
-  usuariosController.resetPassword
+  resetPassword
 );
 
-module.exports = router;
+export default router;

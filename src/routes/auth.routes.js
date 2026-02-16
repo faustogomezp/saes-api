@@ -1,11 +1,13 @@
-const express = require('express');
-const router = express.Router();
-const authController = require('../controllers/auth.controller');
-const usuariosController = require('../controllers/usuarios.controller');
-const {auth} = require('../middlewares/auth.middleware');
+import express from 'express';
+import {Router}  from  'express';
+import {login} from '../controllers/auth.controller.js';
+import {changePassword} from '../controllers/usuarios.controller.js';
+import {auth} from '../middlewares/auth.middleware.js';
 
-router.post('/login', authController.login);
+const router = Router();
 
-router.patch('/change-password', auth, usuariosController.changePassword);
+router.post('/login', login);
 
-module.exports = router;
+router.patch('/change-password', auth, changePassword);
+
+export default router;

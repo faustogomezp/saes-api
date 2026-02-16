@@ -1,13 +1,14 @@
 {
   "name": "saes-api",
   "version": "1.0.0",
+  "type": "module",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Fausto Gomez",
   "license": "ISC",
   "description": "",
   "dependencies": {

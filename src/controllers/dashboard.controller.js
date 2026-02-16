@@ -1,8 +1,8 @@
-const pool = require('../config/db');
+import pool from '../config/db.js';
 
 
 
-exports.getDashboardSaes = async (req, res) => {
+export const getDashboardSaes = async (req, res) => {
   try {
     const result = await pool.query(`
  SELECT
@@ -33,7 +33,7 @@ FROM saes.saes;
   }
 };
 
-exports.getSaesPorCampo = async (req, res) => {
+export const getSaesPorCampo = async (req, res) => {
   try {
     const result = await pool.query(`
       SELECT
@@ -51,7 +51,7 @@ exports.getSaesPorCampo = async (req, res) => {
   }
 };
 
-exports.getSaesPorTecnico = async (req, res) => {
+export const getSaesPorTecnico = async (req, res) => {
   try {
     const result = await pool.query(`
       SELECT
@@ -70,7 +70,7 @@ exports.getSaesPorTecnico = async (req, res) => {
   }
 };
 
-exports.getSemaforoSaes = async (req, res) => {
+export const getSemaforoSaes = async (req, res) => {
   try {
     const result = await pool.query(`
       SELECT

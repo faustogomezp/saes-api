@@ -1,8 +1,8 @@
-const pool = require('../config/db');
-const ExcelJS = require('exceljs');
-const { registrarAuditoria } = require('../utils/auditoria');
+import pool from '../config/db.js';
+import ExcelJS from 'exceljs';
+import { registrarAuditoria } from '../utils/auditoria.js';
 
-exports.getById = async (req, res) => {
+export const getById = async (req, res) => {
   const { id } = req.params;
 
   try {
@@ -26,7 +26,7 @@ exports.getById = async (req, res) => {
   }
 };
 
-exports.getAll = async (req, res) => {
+export const getAll = async (req, res) => {
   try {
     const {
       numero_saes,
@@ -113,7 +113,7 @@ exports.getAll = async (req, res) => {
   }
 };
 
-exports.exportExcel = async (req, res) => {
+export const exportExcel = async (req, res) => {
   try {
     const {
       numero_saes,
@@ -218,7 +218,7 @@ exports.exportExcel = async (req, res) => {
   }
 };
 
-exports.create = async (req, res) => {
+export const create = async (req, res) => {
   const {
     numero_saes,
     numero_orden,
@@ -312,7 +312,7 @@ exports.create = async (req, res) => {
   }
 };
 
-exports.retirar = async (req, res) => {
+export const retirar = async (req, res) => {
   const { id } = req.params;
   const { tecnico_retiro_id, aa_retiro_id, numero_orden } = req.body;
 

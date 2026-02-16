@@ -1,7 +1,7 @@
-const pool = require('../config/db');
-const ExcelJS = require('exceljs');
+import pool from '../config/db.js'
+import ExcelJS from 'exceljs';
 
-exports.getBySaes = async (req, res) => {
+export const getBySaes = async (req, res) => {
   const { saes_id } = req.params;
 
   try {
@@ -26,7 +26,7 @@ exports.getBySaes = async (req, res) => {
   }
 };
 
-exports.exportExcel = async (req, res) => {
+export const exportExcel = async (req, res) => {
   try {
     const {
       saes_id,

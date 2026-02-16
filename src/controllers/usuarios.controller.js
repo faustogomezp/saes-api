@@ -1,14 +1,14 @@
-const pool = require('../config/db');
-const bcrypt = require('bcryptjs');
-const { registrarAuditoria, registrarAuditoriaUsuario } = require('../utils/auditoria');
+import pool from '../config/db.js';
+import bcrypt from 'bcryptjs';
+import { registrarAuditoria, registrarAuditoriaUsuario } from '../utils/auditoria.js';
 
 
-exports.getAll = async (requestAnimationFrame, res) => {
+export const getAll = async (requestAnimationFrame, res) => {
     const result = await pool.query('SELECT id, username, nombre, rol, activo, created_at FROM saes.usuarios ORDER BY nombre');
     res.json(result.rows);
 }
 
-exports.create = async (req, res) => {
+export const create = async (req, res) => {
     const { username, nombre, rol, password } = req.body;
 
     if (!username || !nombre || !rol || !password) {
@@ -52,7 +52,7 @@ exports.create = async (req, res) => {
     }
 };
 
-exports.toggleActivo = async (req, res) => {
+export const toggleActivo = async (req, res) => {
     const { id } = req.params;
 
     if (id === req.user.id) {
@@ -83,7 +83,7 @@ exports.toggleActivo = async (req, res) => {
     res.json({ message: activo ? 'Usuario activado correctamente' : 'Usuario desactivado correctamente' });
 };
 
-exports.resetPassword = async (req, res) => {
+export const resetPassword = async (req, res) => {
     const { id } = req.params;
     const nueva = Math.random().toString(36).slice(-8);
 
@@ -109,7 +109,7 @@ exports.resetPassword = async (req, res) => {
     });
 };
 
-exports.changePassword = async (req, res) => {
+export const changePassword = async (req, res) => {
   try {
     const { currentPassword, newPassword } = req.body;
     const userId = req.user.id;

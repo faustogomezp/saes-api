@@ -1,6 +1,6 @@
-const pool = require('../config/db');
+import pool from '../config/db.js';
 
-const registrarAuditoria = async ({
+export const registrarAuditoria = async ({
   saes_id,
   usuario_id,
   rol,
@@ -16,7 +16,7 @@ const registrarAuditoria = async ({
   );
 };
 
-const registrarAuditoriaUsuario = async ({
+export const registrarAuditoriaUsuario = async ({
   usuario_afectado_id,
   usuario_ejecutor_id,
   accion,
@@ -28,8 +28,4 @@ const registrarAuditoriaUsuario = async ({
      VALUES ($1, $2, $3, $4)`,
     [usuario_afectado_id, usuario_ejecutor_id, accion, detalle]
   );
-};
-module.exports = {
-  registrarAuditoria,
-  registrarAuditoriaUsuario
 };

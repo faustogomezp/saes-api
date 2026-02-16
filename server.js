@@ -8,6 +8,6 @@ import pool from './src/config/db.js';
 
 const PORT = process.env.PORT || 3000;
 
-/*app.listen(PORT, () => {
+app.listen(PORT, () => {
   console.log(`🔥 API SAES corriendo en puerto ${PORT}`);
-});*/
+});

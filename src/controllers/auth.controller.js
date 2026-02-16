@@ -1,8 +1,8 @@
-const pool = require('../config/db');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
+import pool from '../config/db.js';
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcryptjs';
 
-exports.login = async (req, res) => {
+export const login = async (req, res) => {
   const { username, password } = req.body;
 
   if (!username || !password) {

@@ -1,7 +1,9 @@
-const express = require('express');
-const router = express.Router();
-const pool = require('../config/db');
-const { auth } = require('../middlewares/auth.middleware');
+import express from 'express';
+import {Router} from 'express';
+import pool from '../config/db.js';
+import { auth } from '../middlewares/auth.middleware.js';
+
+const router = Router();
 
 router.get('/', auth, async (req, res) => {
   const result = await pool.query(
@@ -10,4 +12,4 @@ router.get('/', auth, async (req, res) => {
   res.json(result.rows);
 });
 
-module.exports = router;
+export default router;

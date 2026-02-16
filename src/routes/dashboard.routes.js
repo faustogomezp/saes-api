@@ -1,13 +1,15 @@
-const express = require('express');
-const router = express.Router();
-const controller = require('../controllers/dashboard.controller');
-const { auth } = require('../middlewares/auth.middleware');
-const { allowRoles } = require('../middlewares/roles.middleware');
+import express from 'express';
+import {Router} from 'express';
+import {getDashboardSaes, getSemaforoSaes,getSaesPorCampo, getSaesPorTecnico } from '../controllers/dashboard.controller.js';
+import { auth } from '../middlewares/auth.middleware.js';
+import { allowRoles } from '../middlewares/roles.middleware.js';
 
-router.get('/saes', auth, allowRoles('ADMIN', 'SUPERVISOR'), controller.getDashboardSaes);
-router.get('/saes/semaforo', auth, controller.getSemaforoSaes);
-router.get('/saes/campo', auth, controller.getSaesPorCampo);
-router.get('/saes/tecnico', auth, controller.getSaesPorTecnico);
+const router = Router();
+
+router.get('/saes', auth, allowRoles('ADMIN', 'SUPERVISOR'), getDashboardSaes);
+router.get('/saes/semaforo', auth, getSemaforoSaes);
+router.get('/saes/campo', auth, getSaesPorCampo);
+router.get('/saes/tecnico', auth, getSaesPorTecnico);
 
 
-module.exports = router;
+export default router;

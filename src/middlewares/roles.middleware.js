@@ -1,4 +1,4 @@
-exports.allowRoles = (...roles) => {
+export const allowRoles = (...roles) => {
   return (req, res, next) => {
     // auth middleware debe haber cargado req.user
     if (!req.user || !req.user.rol) {

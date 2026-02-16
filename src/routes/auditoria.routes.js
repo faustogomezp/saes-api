@@ -1,9 +1,11 @@
-const express = require('express');
-const router = express.Router();
-const auditoriaController = require('../controllers/auditoria.controller');
-const { auth } = require('../middlewares/auth.middleware');
+import express from 'express';
+import {Router} from 'express';
+import {getBySaes,exportExcel } from '../controllers/auditoria.controller.js';
+import { auth } from '../middlewares/auth.middleware.js';
 
-router.get('/:saes_id', auth, auditoriaController.getBySaes);
-router.get('/export/excel', auth, auditoriaController.exportExcel);
+const router = Router();
 
-module.exports = router;
+router.get('/:saes_id', auth, getBySaes);
+router.get('/export/excel', auth, exportExcel);
+
+export default router;
