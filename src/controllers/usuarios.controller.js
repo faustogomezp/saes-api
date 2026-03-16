@@ -12,8 +12,8 @@ export const getAAPorCampo = async (req, res) => {
   const {campoId} = req.params;
   const result = await pool.query(
     `
-    SELECT id, nombre FROM saes.usuarios u JOIN saes.usuarios_campos uc ON uc.usuario_id = u.id
-    WHERE u.rol = 'AA' AND uc.id = $1 AND u.activo = true 
+    SELECT u.id, u.nombre FROM saes.usuarios u JOIN saes.usuarios_campos uc ON uc.usuario_id = u.id
+    WHERE u.rol = 'AA' AND uc.campo_id = $1 AND u.activo = true 
     `,
     [campoId]
   );
