@@ -10,6 +10,7 @@ export const getAll = async (requestAnimationFrame, res) => {
 
 export const getAAPorCampo = async (req, res) => {
   const {campoId} = req.params;
+  console.log(campoId);
   const result = await pool.query(
     `
     SELECT u.id, u.nombre FROM saes.usuarios u JOIN saes.usuarios_campos uc ON uc.usuario_id = u.id
