@@ -1,7 +1,7 @@
 import  express from 'express';
 import {Router} from 'express';
 import pool from '../config/db.js';
-import {getAll, create, toggleActivo, resetPassword} from '../controllers/usuarios.controller.js';
+import {getAll, create, toggleActivo, resetPassword, getAAPorCampo} from '../controllers/usuarios.controller.js';
 import { auth } from '../middlewares/auth.middleware.js';
 import { allowRoles } from '../middlewares/roles.middleware.js';
 
@@ -19,6 +19,12 @@ router.get('/aa', auth, async (req, res) => {
   );
   res.json(result.rows);
 });
+
+router.get(
+  '/aa-por-campo/:campoId', 
+  auth,
+  getAAPorCampo 
+);
 
 router.post(
   '/', 

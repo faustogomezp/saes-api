@@ -8,6 +8,18 @@ export const getAll = async (requestAnimationFrame, res) => {
     res.json(result.rows);
 }
 
+export const getAAPorCampo = async (req, res) => {
+  const {campoId} = req.params;
+  const result = await pool.query(
+    `
+    SELECT undefined.id, undefined.nombre FROM satisfies.usuarios u JOIN satisfies.usuarios_campos uc ON uc.usuario_id = u.id
+    WHERE u.rol = 'AA' AND uc.campo_id = $1 AND u.activo = true 
+    `,
+    [campoId]
+  );
+  res.json(result.rows);
+};
+
 export const create = async (req, res) => {
     const { username, nombre, rol, password } = req.body;
 
