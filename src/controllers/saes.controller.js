@@ -129,7 +129,7 @@ export const exportExcel = async (req, res) => {
         numero_saes,
         numero_orden_instalacion,
         numero_orden_retiro,
-        campo,
+        nombre,
         equipo,
         actividad,
         estado,
